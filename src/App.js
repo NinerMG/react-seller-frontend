@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import FooterComponent from './components/FooterComponent';
+import HeaderComponent from './components/HeaderComponent';
+import ListSellerComponent from './components/ListSellerComponent';
+import AddSellerComponent from './components/AddSellerComponent';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <HeaderComponent />
+        <div className = "container">
+          <Routes>
+            <Route exact path = "/" element = {<ListSellerComponent/>}></Route>
+            <Route path = "/clients" element = {<ListSellerComponent/>}></Route>
+            <Route path = "/editcampaign" element = {<AddSellerComponent/>}></Route>
+            <Route path = "/edit-seller/:id" element = {<AddSellerComponent/>}></Route>
+
+          </Routes>
+        </div>
+        <FooterComponent />
+      </Router>
     </div>
   );
 }
